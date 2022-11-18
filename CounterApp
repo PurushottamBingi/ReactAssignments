@@ -1,0 +1,21 @@
+import React, { useState } from "react";
+
+const App = () => {
+const [counter, setCounter] = useState(0)
+const Click1 = () => {
+	setCounter(counter + 1)
+}
+const Click2 = () => {
+	setCounter(counter - 1)
+}
+return (
+    <div>
+	 <h1>Counter App</h1>
+     <h2>{counter}</h2>
+     <button onClick={Click1}>Increment</button>
+     <button onClick={Click2}>Decrement</button>
+    </div>
+)
+}
+
+export default App
