@@ -1,0 +1,27 @@
+import './App.css'; 
+import React ,{useState}from 'react'; 
+ 
+function App() { 
+ 
+const [inputValue, setInputValue]= useState("") 
+const [bgColor, setColor]=useState("") 
+ 
+function handleInput(e){ 
+  setInputValue(e.target.value) 
+} 
+ 
+function handleClick(){ 
+ setColor(inputValue) 
+} 
+ 
+  return ( 
+    <> 
+    <input type="text" onChange={handleInput} value={inputValue}></input> 
+    <style>{`body { background-color: ${bgColor}; }`}</style> 
+    <button onClick={handleClick}>Change Color</button> 
+    </> 
+ 
+  ); 
+} 
+ 
+export default App;
