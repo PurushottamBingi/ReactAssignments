@@ -1,0 +1,64 @@
+import React, { useState } from "react";
+import './index.css'
+
+function App(){
+    const [name,setName]=useState("")
+    const [surname,setsurName]=useState("")
+    const [num,setNum]=useState("")
+    const [form,setForm]=useState([])
+
+    function handleForm(e){
+        e.preventDefault();
+        if(name !== "" && surname!=="" && num!==""){
+           setForm([...form,{
+            id:form.length+1,
+            Name:name,
+            Surname:surname,
+            Number:num
+           }]) 
+        }
+        setName("")
+        setsurName("")
+        setNum("")
+    }
+
+
+
+
+    return (<>
+    <h1>Add Form Details In table</h1>
+
+    <form onSubmit={handleForm}>
+    <input type="text" placeholder="Write Name" value={name} onChange={(e)=>setName(e.target.value)}></input>
+    <br></br>
+    <input type="text" placeholder="Write surname" value={surname} onChange={(e)=>setsurName(e.target.value)}></input>
+    <br></br>
+    <input type="number" placeholder="Write Number" value={num} onChange={(e)=>setNum(e.target.value)}></input>
+    <br></br>
+    <button type="submit">Submit</button>
+    </form>
+
+    <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Number</th>
+         </tr>  
+        </thead>
+        <tbody>
+           {form.map ( item=>(
+              <tr key={item.id}>
+              <td>{item.Name}</td>
+              <td>{item.Surname}</td>
+               <td>{item.Number}</td>
+              </tr>
+           ))}
+            
+            
+        </tbody>
+    </table>
+    
+    </>)
+}
+export default App
